@@ -1,0 +1,2 @@
+.body{background-color:var(--body-background-color);height:100vh;width:100vw}.loading{animation:rotate 4s linear infinite;height:auto;width:180px}@keyframes rotate{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@media (min-width:768px){.loading{width:250px}}.main{align-items:center;display:flex;height:100%;justify-content:center;width:100%}:root{--body-background-color:#5271ff}*{border:0;box-sizing:border-box;list-style:none;margin:0;padding:0;text-decoration:none}
+/*# sourceMappingURL=main.eef24f20.css.map*/
