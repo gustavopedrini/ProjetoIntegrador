@@ -5,7 +5,7 @@ const users = require("./routes/users.js");
 
 // Instance of Express application.
 const app = express();
-const PORT = process.env.PORT || 3000; // Server port.
+const PORT = process.env.PORT || 3001; // Server port.
 
 // Middlewares.
 app.use(express.json()); // Allows the request of json files.

@@ -12,4 +12,4 @@ class UserServices {
 }
 
 
-module.exports = ClientServices;
+module.exports = UserServices;

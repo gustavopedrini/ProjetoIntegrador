@@ -12,3 +12,6 @@ router.get('/', controller.GetUsers);
 // router.post('/', controller.CreateUser);
 // router.put('/:id', controller.UpdateUser);
 // router.delete('/:id', controller.DeleteUser);
+
+
+module.exports = router;
