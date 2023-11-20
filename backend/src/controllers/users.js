@@ -1,5 +1,8 @@
-const UserServices = require("../services/users.js");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
+const UserServices = require("../services/users.js");
+const config = require("../config.js");
 
 const services = new UserServices();
 
@@ -30,6 +33,7 @@ class UserController {
     async CreateUser(req, res) {
         try {
             const data = {
+                role: 0,
                 cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
@@ -48,6 +52,7 @@ class UserController {
     async UpdateUser(req, res) {
         try {
             const data = {
+                cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
             }

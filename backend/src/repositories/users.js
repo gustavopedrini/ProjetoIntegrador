@@ -6,8 +6,7 @@ const encrypter = new DataEncrypter();
 
 class UserRepository {
     async GetUsers() {
-        // const users = await Users.findAll();
-        const users = "Recebeu a resposta do backend"
+        const users = await Users.findAll();
 
         return users;
     };
@@ -23,7 +22,7 @@ class UserRepository {
     };
 
 
-    async CreateUser(user, transaction) {
+    async CreateUser(data, transaction) {
         const hashedPassword = await encrypter.HashPassword(data.password);
 
         const user = await Users.create(
@@ -46,6 +45,7 @@ class UserRepository {
 
         Users.update(
             {
+                cpf: data.cpf,
                 email: data.email,
                 password: hashedPassword,
                 updated_at: new Date()
@@ -61,6 +61,15 @@ class UserRepository {
             { where: { id } },
             { transaction }
         );
+    };
+
+
+    async FindUserByEmail(email) {
+        return Users.findOne({
+            where: {
+                email: email
+            }
+        });
     };
 };
 

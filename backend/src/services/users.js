@@ -29,9 +29,14 @@ class UserServices {
     };
 
 
-    async DeleteClient(id, transaction) {
-        const result = repositories.DeleteClient(id, transaction);
+    async DeleteUser(id, transaction) {
+        const result = repositories.DeleteUser(id, transaction);
         return result;
+    };
+
+
+    async FindUserByEmail(email) {
+        return repositories.FindUserByEmail(email);
     };
 }
 
