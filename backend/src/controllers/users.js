@@ -71,6 +71,42 @@ class UserController {
             res.status(500).json({ message: error.message });
         }
     };
+
+
+    async Login(req, res) {
+        try {
+            const { email, password } = req.body;
+            const { dataValues: user } = await services.FindUserByEmail(email);
+
+            if (!email || !password) {
+                return res.status(401).json({ message: "Invalid email or password" })
+            }
+
+            if (!user) {
+                return res.status(401).json({ message: "Invalid email or password" })
+            }
+
+            if (!(await bcrypt.compare(password, user.password))) {
+                return res.status(401).json({ message: "Invalid email or password" })
+            }
+
+            const token = jwt.sign(
+                {
+                    id: user.id,
+                    cpf: user.cpf,
+                    email: user.email,
+                    role: user.role
+                },
+                config.secret,
+            )
+            return res.status(200).json({ accessToken: token });
+        }
+        catch (error) {
+            return res.status(500).json({
+                message: error.message
+            });
+        }
+    };
 };
 
 
