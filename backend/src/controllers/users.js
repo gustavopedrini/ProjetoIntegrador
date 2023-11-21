@@ -8,9 +8,9 @@ const services = new UserServices();
 
 
 class UserController {
-    async GetUsers(_, res) {
+    async getUsers(_, res) {
         try {
-            const users = await services.GetUsers();
+            const users = await services.getUsers();
             res.status(200).json({ content: users });
         }
         catch (error) {
@@ -19,9 +19,9 @@ class UserController {
     };
 
 
-    async GetUserById(req, res) {
+    async getUserById(req, res) {
         try {
-            const user = await services.GetUserById(req.params.id);
+            const user = await services.getUserById(req.params.id);
             res.status(200).json({ content: user });
         }
         catch (error) {
@@ -30,7 +30,7 @@ class UserController {
     };
 
 
-    async CreateUser(req, res) {
+    async createUser(req, res) {
         try {
             const data = {
                 role: 0,
@@ -39,7 +39,7 @@ class UserController {
                 password: req.body.password
             }
 
-            const result = await services.CreateUser(data);
+            const result = await services.createUser(data);
 
             res.status(201).json(result);
         }
@@ -49,7 +49,7 @@ class UserController {
     };
 
 
-    async UpdateUser(req, res) {
+    async updateUser(req, res) {
         try {
             const data = {
                 cpf: req.body.cpf,
@@ -57,7 +57,7 @@ class UserController {
                 password: req.body.password
             }
 
-            const result = await services.UpdateUser(req.params.id, data);
+            const result = await services.updateUser(req.params.id, data);
 
             res.status(200).json(result);
         }
@@ -67,9 +67,9 @@ class UserController {
     };
 
 
-    async DeleteUser(req, res) {
+    async deleteUser(req, res) {
         try {
-            const result = await services.DeleteUser(req.params.id);
+            const result = await services.deleteUser(req.params.id);
             res.status(200).json({ data: result });
         }
         catch (error) {
@@ -78,10 +78,10 @@ class UserController {
     };
 
 
-    async Login(req, res) {
+    async login(req, res) {
         try {
             const { email, password } = req.body;
-            const { dataValues: user } = await services.FindUserByEmail(email);
+            const { dataValues: user } = await services.findUserByEmail(email);
 
             if (!email || !password) {
                 return res.status(401).json({ message: "Invalid email or password" })

@@ -5,14 +5,14 @@ const encrypter = new DataEncrypter();
 
 
 class UserRepository {
-    async GetUsers() {
+    async getUsers() {
         const users = await Users.findAll();
 
         return users;
     };
 
 
-    async GetUserById(id, transaction) {
+    async getUserById(id, transaction) {
         const user = await Users.findOne(
             { where: { id } },
             { transaction }
@@ -22,8 +22,8 @@ class UserRepository {
     };
 
 
-    async CreateUser(data, transaction) {
-        const hashedPassword = await encrypter.HashPassword(data.password);
+    async createUser(data, transaction) {
+        const hashedPassword = await encrypter.hashPassword(data.password);
 
         const user = await Users.create(
             {
@@ -40,8 +40,8 @@ class UserRepository {
     };
 
 
-    async UpdateUser(id, data, transaction) {
-        const hashedPassword = await encrypter.HashPassword(data.password);
+    async updateUser(id, data, transaction) {
+        const hashedPassword = await encrypter.hashPassword(data.password);
 
         Users.update(
             {
@@ -56,7 +56,7 @@ class UserRepository {
     };
 
 
-    async DeleteUser(id, transaction) {
+    async deleteUser(id, transaction) {
         Users.destroy(
             { where: { id } },
             { transaction }
@@ -64,7 +64,7 @@ class UserRepository {
     };
 
 
-    async FindUserByEmail(email) {
+    async findUserByEmail(email) {
         return Users.findOne({
             where: {
                 email: email
