@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Requester from "../../data/Requester";
 
-import authenticateUser from "../../utilities/Login.js";
+import login from "../../utilities/Login.js";
 
 
 const FetchDataExample = () => {
@@ -10,8 +10,8 @@ const FetchDataExample = () => {
     useEffect(() => {
         const FetchData = async () => {
             try {
-                // Testing authenticateUser function, should set the localStorage authToken.
-                authenticateUser("samuca@hotmail.com", "batata");
+                // Testing login function, should set the localStorage authToken.
+                login("samuca@hotmail.com", "batata");
                 // localStorage.removeItem("authToken");
 
                 // Header of the resquest should get the localStorage authToken.

@@ -1,7 +1,7 @@
 import Requester from "../data/Requester";
 
 
-const authenticateUser = async (email, password) => {
+const login = async (email, password) => {
     try {
         const data = {
             email: email,
@@ -21,4 +21,4 @@ const authenticateUser = async (email, password) => {
 };
 
 
-export default authenticateUser;
+export default login;
