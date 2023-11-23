@@ -1,11 +1,16 @@
 import Requester from "../data/Requester";
 
+
 const authenticateUser = async (email, password) => {
     try {
-        const data = { email: email, password: password }
+        const data = {
+            email: email,
+            password: password
+        }
 
         const authToken = await Requester("post", "users/login", data, response => {
-            return response.data.content;
+            // console.log("Response from server:", response);
+            return response.data.accessToken;
         })
 
         localStorage.setItem("authToken", `${authToken}`);
@@ -13,8 +18,6 @@ const authenticateUser = async (email, password) => {
     catch (error) {
         throw new Error(error);
     }
-
-
 };
 
 

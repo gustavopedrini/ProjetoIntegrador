@@ -1,22 +1,29 @@
 import { useState, useEffect } from "react";
 import Requester from "../../data/Requester";
 
+import authenticateUser from "../../utilities/Login.js";
+
 
 const FetchDataExample = () => {
     const [userData, setUserData] = useState([]);
 
-    localStorage.setItem("authToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY3BmIjoiNjY2NDQ0MzMzMTEiLCJlbWFpbCI6Im5hdGFuQGhvdG1haWwuY29tIiwicm9sZSI6MCwiaWF0IjoxNzAwNTIxMzkxfQ.pIOkAiax1YOM0eNUsoGBCa7iJdQ_GHMeCWy8Kz8x8sw")
-
     useEffect(() => {
         const FetchData = async () => {
             try {
+                // Testing authenticateUser function, should set the localStorage authToken.
+                authenticateUser("samuca@hotmail.com", "batata");
+                // localStorage.removeItem("authToken");
+
+                // Header of the resquest should get the localStorage authToken.
                 const data = { headers: `Authorization: ${localStorage.getItem("authToken")}` }
 
+                // Using the Requester function to make a request.
                 const dataResponse = await Requester("get", "users", data, response => {
+                    // Server response.
+                    console.log("server response:", response)
                     return response.data.content;
                 })
-                console.log(dataResponse)
-
+                // Setting userData with the response.
                 setUserData(dataResponse)
             }
             catch (error) {
@@ -30,7 +37,15 @@ const FetchDataExample = () => {
 
     return (
         <>
-            <h1>{userData}</h1>
+            <h1>User Data:</h1>
+            <ul>
+                {userData.map(user => (
+                    <li key={user.id}>
+                        <p>ID: {user.id}</p>
+                        <p>Email: {user.email}</p>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
