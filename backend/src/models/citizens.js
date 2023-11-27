@@ -6,7 +6,7 @@ const db = require("../database/database.js");
 const Users = require("./users.js");
 
 
-const Citizen = db.define("cidadaos", {
+const Citizens = db.define("cidadaos", {
     id: {
         field: "idCidadao",
         primaryKey: true,
@@ -37,7 +37,7 @@ const Citizen = db.define("cidadaos", {
 });
 
 
-Citizen.belongsTo(Users, { foreignKey: 'id_user', allowNull: false });
+Citizens.belongsTo(Users, { foreignKey: 'id_user', allowNull: false });
 
 
-module.exports = Citizen;
+module.exports = Citizens;
