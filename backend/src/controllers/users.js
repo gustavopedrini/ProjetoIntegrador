@@ -33,7 +33,6 @@ class UserController {
     async createUser(req, res) {
         try {
             const data = {
-                role: 0,
                 name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
@@ -42,7 +41,7 @@ class UserController {
 
             const result = await services.createUser(data);
 
-            res.status(201).json(result);
+            res.status(201).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });
@@ -61,7 +60,7 @@ class UserController {
 
             const result = await services.updateUser(req.params.id, data);
 
-            res.status(200).json(result);
+            res.status(200).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });
@@ -72,7 +71,7 @@ class UserController {
     async deleteUser(req, res) {
         try {
             const result = await services.deleteUser(req.params.id);
-            res.status(200).json({ data: result });
+            res.status(200).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });

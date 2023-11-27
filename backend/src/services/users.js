@@ -11,14 +11,14 @@ class UserServices {
     };
 
 
-    async createUser(data, transaction) {
-        const user = repositories.createUser(data, transaction);
+    async getUserById(id, transaction) {
+        const user = repositories.getUserById(id, transaction);
         return user;
     };
 
 
-    async getUserById(id, transaction) {
-        const user = repositories.getUserById(id, transaction);
+    async createUser(data, transaction) {
+        const user = repositories.createUser(data, transaction);
         return user;
     };
 
