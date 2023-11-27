@@ -33,7 +33,7 @@ class UserController {
     async createUser(req, res) {
         try {
             const data = {
-                role: 0,
+                name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
@@ -52,6 +52,7 @@ class UserController {
     async updateUser(req, res) {
         try {
             const data = {
+                name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
@@ -98,6 +99,7 @@ class UserController {
             const token = jwt.sign(
                 {
                     id: user.id,
+                    name: user.name,
                     cpf: user.cpf,
                     email: user.email,
                     role: user.role

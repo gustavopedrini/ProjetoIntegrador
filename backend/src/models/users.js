@@ -2,6 +2,12 @@ const { DataTypes } = require("sequelize");
 
 const db = require("../database/database.js");
 
+// Roles
+// 0 - Admins
+// 1 - Citizens
+// 2 - Politicians
+// 3 - Employees
+
 const Users = db.define("users", {
     id: {
         type: DataTypes.INTEGER,
@@ -10,6 +16,10 @@ const Users = db.define("users", {
     },
     role: {
         type: DataTypes.TINYINT,
+        allowNull: false
+    },
+    name: {
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     cpf: {
