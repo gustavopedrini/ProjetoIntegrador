@@ -33,6 +33,7 @@ class UserController {
     async createUser(req, res) {
         try {
             const data = {
+                role: 0,
                 name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
