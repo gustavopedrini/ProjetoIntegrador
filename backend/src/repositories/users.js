@@ -71,12 +71,24 @@ class UserRepository {
     };
 
 
-    async findUserByEmail(email) {
-        return Users.findOne({
-            where: {
-                email: email
-            }
-        });
+    async userLogin(email, cpf) {
+        if (email) {
+            return Users.findOne({
+                where: {
+                    email: email
+                }
+            });
+        }
+        else if (cpf) {
+            return Users.findOne({
+                where: {
+                    cpf: cpf
+                }
+            });
+        }
+        else {
+            return null;
+        }
     };
 };
 

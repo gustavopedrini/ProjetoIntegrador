@@ -81,19 +81,15 @@ class UserController {
 
     async login(req, res) {
         try {
-            const { email, password } = req.body;
-            const { dataValues: user } = await services.findUserByEmail(email);
-
-            if (!email || !password) {
-                return res.status(401).json({ message: "Invalid email or password" })
-            }
+            const { email, cpf, password } = req.body;
+            const { dataValues: user } = await services.userLogin(email, cpf);
 
             if (!user) {
-                return res.status(401).json({ message: "Invalid email or password" })
+                return res.status(401).json({ message: "Invalid email/cpf or password" })
             }
 
             if (!(await bcrypt.compare(password, user.password))) {
-                return res.status(401).json({ message: "Invalid email or password" })
+                return res.status(401).json({ message: "Invalid email/cpf or password" })
             }
 
             const token = jwt.sign(

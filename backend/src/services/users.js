@@ -35,8 +35,8 @@ class UserServices {
     };
 
 
-    async findUserByEmail(email) {
-        return repositories.findUserByEmail(email);
+    async userLogin(email, cpf) {
+        return repositories.userLogin(email, cpf);
     };
 }
 
