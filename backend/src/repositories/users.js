@@ -25,6 +25,12 @@ class UserRepository {
     async createUser(data, transaction) {
         const hashedPassword = await encrypter.hashPassword(data.password);
 
+        // console.log("role: " + data.role)
+        // console.log("name: " + data.name)
+        // console.log("cpf: " + data.cpf)
+        // console.log("email: " + data.email)
+        // console.log("password: " + hashedPassword)
+
         const user = await Users.create(
             {
                 role: data.role,

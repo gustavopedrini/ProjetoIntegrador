@@ -20,6 +20,11 @@ class CitizenRepository {
 
 
     async createCitizen(data, transaction) {
+
+        // console.log("id_user: " + data.id_user)
+        // console.log("photo: " + data.photo)
+        // console.log("description: " + data.description)
+
         const citizen = await Citizens.create(
             {
                 id_user: data.id_user,

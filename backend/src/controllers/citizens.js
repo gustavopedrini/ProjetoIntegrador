@@ -51,6 +51,7 @@ class CitizenController {
             res.status(201).json({ content: result });
         }
         catch (error) {
+            console.log(error)
             res.status(500).json({ message: error.message });
         }
     };
