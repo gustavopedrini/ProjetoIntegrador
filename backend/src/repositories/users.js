@@ -25,9 +25,16 @@ class UserRepository {
     async createUser(data, transaction) {
         const hashedPassword = await encrypter.hashPassword(data.password);
 
+        // console.log("role: " + data.role)
+        // console.log("name: " + data.name)
+        // console.log("cpf: " + data.cpf)
+        // console.log("email: " + data.email)
+        // console.log("password: " + hashedPassword)
+
         const user = await Users.create(
             {
                 role: data.role,
+                name: data.name,
                 cpf: data.cpf,
                 email: data.email,
                 password: hashedPassword,
@@ -64,12 +71,24 @@ class UserRepository {
     };
 
 
-    async findUserByEmail(email) {
-        return Users.findOne({
-            where: {
-                email: email
-            }
-        });
+    async userLogin(email, cpf) {
+        if (email) {
+            return Users.findOne({
+                where: {
+                    email: email
+                }
+            });
+        }
+        else if (cpf) {
+            return Users.findOne({
+                where: {
+                    cpf: cpf
+                }
+            });
+        }
+        else {
+            return null;
+        }
     };
 };
 
