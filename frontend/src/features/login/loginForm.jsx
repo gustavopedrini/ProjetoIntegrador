@@ -13,14 +13,14 @@ const LoginForm = () => {
 
   useEffect(() => {
     const handleLoginClick = () => {
-      formSignup.style.left = "450px";
-      formSignin.style.left = "0px";
+      formSignup.classList.add('deactivated');
+      formSignin.classList.remove('deactivated');
       btnColor.style.left = "0px";
     };
 
     const handleCadastroClick = () => {
-      formSignin.style.left = "-450px";
-      formSignup.style.left = "0px";
+      formSignup.classList.remove('deactivated');
+      formSignin.classList.add('deactivated');
       btnColor.style.left = "50%";
     };
 

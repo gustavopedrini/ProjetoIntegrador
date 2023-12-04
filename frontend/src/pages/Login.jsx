@@ -1,65 +1,63 @@
 import "../features/login/login.css";
 import LoginForm from "../features/login/loginForm.jsx";
+import resolville_logo from "../assets/images/resolville_logo.png";
+import google_logo from "../assets/images/google_logo.png";
+import apple_logo from "../assets/images/apple_logo.png";
 
 const Login = () => {
   return (
-    <div className="container">
-      <LoginForm/>
+    <div className="screen">
+      <div className="container">
+        <LoginForm/>
+        
+        <img className="logo" alt="Logo" src={resolville_logo} />
 
-      <img className="logo" alt="Logo" src="logo.png" />
-
-      <div className="btnsForm">
-        <div className="btnColor"></div>
-        <button id="btnLogin"><a>Login</a></button>
-        <button id="btnCadastro"><a>Cadastro</a></button>
-      </div>
-      
-      {/* <p className="p">Faça seu login preenchendo os campos abaixo:</p> */}
-      
-      <form id="login">
-        <input type="text" placeholder="Email ou CPF" required />
-        <input type="password" placeholder="Senha" required />
-
-        <div className="divCheck">
-          <input type="checkbox" />
-          <span>Lembrar de mim</span>
-
-          <span>Esqueceu a senha?</span>
+        <div className="btnsForm">
+          <div className="btnColor"></div>
+          <button id="btnLogin"><a>Login</a></button>
+          <button id="btnCadastro"><a>Cadastro</a></button>
         </div>
+        
+        <a className="desc">Faça seu login preenchendo os campos abaixo:</a>
+        
+        <form id="login">
+          <input type="text" placeholder="Email ou CPF" required />
+          <input type="password" placeholder="Senha" required />
 
-        <button type="submit">Entrar</button>
-      </form>
+          <div className="divCheck">
+            <input type="checkbox" />
+            <span className="smalldesc">Lembrar de mim</span>
 
-      <form id="cadastro">
-        <input type="text" placeholder="Nome de Usuário" required />
-        <input type="text" placeholder="Email ou CPF" required />
-        <input type="password" placeholder="Senha" required />
-
-        <button type="submit">Cadastrar</button>
-      </form>
-
-      <div className="or-line">
-        <div className="overlap-2">
-          <div className="rectangle" />
-          <div className="text-wrapper-3">ou</div>
-        </div>
-      </div>
-
-      <div className="continue-with-apple">
-          <div className="overlap-group">
-            <div className="text-wrapper">Continuar com a Apple</div>
-            <img className="ic-baseline-apple" alt="Ic baseline apple" src="ic-baseline-apple.svg" />
+            <span className="smalldesc">Esqueceu a senha?</span>
           </div>
+
+          <button className="actionBtn" type="submit">Entrar</button>
+        </form>
+
+        <form className="deactivated" id="cadastro">
+          <input type="text" placeholder="Nome de Usuário" required />
+          <input type="text" placeholder="Email ou CPF" required />
+          <input type="password" placeholder="Senha" required />
+
+          <button className="actionBtn" type="submit">Cadastrar</button>
+        </form>
+
+        <div className="orLine">
+          <a>ou</a>
         </div>
 
-        <div className="continue-with-google">
-          <div className="overlap">
-            <div className="text-wrapper-2">Continuar com o Google</div>
-            <img className="flat-color-icons" alt="Flat color icons" src="flat-color-icons-google.svg" />
-          </div>
-        </div>
+        <button className="continueWithBtn" type="submit">
+          <img className="icon" alt="Logo" src={google_logo} />
+          Continuar com o Google
+        </button>
 
+        <button className="continueWithBtn" type="submit">
+          <img className="icon" alt="Logo" src={apple_logo} />
+          Continuar com a Apple
+        </button>
+      </div>
     </div>
+    
   );
 };
 
