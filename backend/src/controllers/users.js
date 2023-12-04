@@ -33,7 +33,7 @@ class UserController {
     async createUser(req, res) {
         try {
             const data = {
-                role: 0,
+                name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
@@ -41,7 +41,7 @@ class UserController {
 
             const result = await services.createUser(data);
 
-            res.status(201).json(result);
+            res.status(201).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });
@@ -52,6 +52,7 @@ class UserController {
     async updateUser(req, res) {
         try {
             const data = {
+                name: req.body.name,
                 cpf: req.body.cpf,
                 email: req.body.email,
                 password: req.body.password
@@ -59,7 +60,7 @@ class UserController {
 
             const result = await services.updateUser(req.params.id, data);
 
-            res.status(200).json(result);
+            res.status(200).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });
@@ -70,7 +71,7 @@ class UserController {
     async deleteUser(req, res) {
         try {
             const result = await services.deleteUser(req.params.id);
-            res.status(200).json({ data: result });
+            res.status(200).json({ content: result });
         }
         catch (error) {
             res.status(500).json({ message: error.message });
@@ -80,24 +81,21 @@ class UserController {
 
     async login(req, res) {
         try {
-            const { email, password } = req.body;
-            const { dataValues: user } = await services.findUserByEmail(email);
-
-            if (!email || !password) {
-                return res.status(401).json({ message: "Invalid email or password" })
-            }
+            const { email, cpf, password } = req.body;
+            const { dataValues: user } = await services.userLogin(email, cpf);
 
             if (!user) {
-                return res.status(401).json({ message: "Invalid email or password" })
+                return res.status(401).json({ message: "Invalid email/cpf or password" })
             }
 
             if (!(await bcrypt.compare(password, user.password))) {
-                return res.status(401).json({ message: "Invalid email or password" })
+                return res.status(401).json({ message: "Invalid email/cpf or password" })
             }
 
             const token = jwt.sign(
                 {
                     id: user.id,
+                    name: user.name,
                     cpf: user.cpf,
                     email: user.email,
                     role: user.role

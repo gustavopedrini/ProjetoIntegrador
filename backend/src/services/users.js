@@ -11,14 +11,14 @@ class UserServices {
     };
 
 
-    async createUser(data, transaction) {
-        const user = repositories.createUser(data, transaction);
+    async getUserById(id, transaction) {
+        const user = repositories.getUserById(id, transaction);
         return user;
     };
 
 
-    async getUserById(id, transaction) {
-        const user = repositories.getUserById(id, transaction);
+    async createUser(data, transaction) {
+        const user = repositories.createUser(data, transaction);
         return user;
     };
 
@@ -35,8 +35,8 @@ class UserServices {
     };
 
 
-    async findUserByEmail(email) {
-        return repositories.findUserByEmail(email);
+    async userLogin(email, cpf) {
+        return repositories.userLogin(email, cpf);
     };
 }
 

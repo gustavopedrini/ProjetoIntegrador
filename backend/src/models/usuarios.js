@@ -14,7 +14,7 @@ const Usuario = db.define('usuarios', {
     },
 
     cpf: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
         unique: true
     },
