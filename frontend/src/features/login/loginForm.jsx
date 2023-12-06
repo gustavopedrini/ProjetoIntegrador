@@ -1,37 +1,56 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import login from "../../utilities/Login.js";
 
 const LoginForm = () => {
-  const [formSignin, setFormSignin] = useState(null);
-  const [formSignup, setFormSignup] = useState(null);
-  const [btnColor, setBtnColor] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    setFormSignin(document.querySelector('#login'));
-    setFormSignup(document.querySelector('#cadastro'));
-    setBtnColor(document.querySelector('.btnColor'));
-  }, []);
+  const handleEmailEdit = (event) => {
+    setEmail(event.target.value);
+  }
 
-  useEffect(() => {
-    const handleLoginClick = () => {
-      formSignup.classList.add('deactivated');
-      formSignin.classList.remove('deactivated');
-      btnColor.style.left = "0px";
-    };
+  const handlePasswordEdit = (event) => {
+    setPassword(event.target.value);
+  }
 
-    const handleCadastroClick = () => {
-      formSignup.classList.remove('deactivated');
-      formSignin.classList.add('deactivated');
-      btnColor.style.left = "50%";
-    };
+  const handleLogin = (event) => {
+    try{
+      event.preventDefault();
+      console.log(email, password);
+      login(email, password);
+    }catch(error){
+      console.log(error);
+    }
+  };
 
-    document.querySelector('#btnLogin').addEventListener('click', handleLoginClick);
-    document.querySelector('#btnCadastro').addEventListener('click', handleCadastroClick);
+  return (
+    <form id="login" onSubmit={handleLogin}>
+      <input 
+        type="text" 
+        placeholder="Email ou CPF" 
+        value={email}
+        onChange={handleEmailEdit}
+        required 
+      />
 
-    return () => {
-      document.querySelector('#btnLogin').removeEventListener('click', handleLoginClick);
-      document.querySelector('#btnCadastro').removeEventListener('click', handleCadastroClick);
-    };
-  }, [formSignin, formSignup, btnColor]);
+      <input 
+        type="password" 
+        placeholder="Senha"
+        value={password}
+        onChange={handlePasswordEdit}
+        required 
+      />
+
+      <div className="divCheck">
+        <input type="checkbox" />
+        <span className="smalldesc ">Lembrar de mim</span>
+
+        <span className="smalldesc">Esqueceu a senha?</span>
+      </div>
+
+      <button className="actionBtn" type="submit">Entrar</button>
+    </form>
+  );
 };
 
 export default LoginForm;

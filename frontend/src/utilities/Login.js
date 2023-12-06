@@ -15,10 +15,12 @@ const login = async (email, password) => {
             return response.data.accessToken;
         })
         const decodedToken = jwtDecode(authToken);
-        // console.log("authToken:", authToken);
-        // console.log("User CPF:", decodedToken.cpf);
-        // console.log("User Email:", decodedToken.email);
-        // console.log("User Role:", decodedToken.role);
+        
+        console.log("authToken:", authToken);
+        console.log("User CPF:", decodedToken.cpf);
+        console.log("User Email:", decodedToken.email);
+        console.log("User Role:", decodedToken.role);
+
         localStorage.setItem("authToken", `${authToken}`);
         localStorage.setItem("userCPF", `${decodedToken.cpf}`);
         localStorage.setItem("userEmail", `${decodedToken.email}`);
