@@ -1,23 +1,35 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import login from "../../utilities/Login.js";
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailEdit = (event) => {
+    console.log(event.target.value);
     setEmail(event.target.value);
   }
 
   const handlePasswordEdit = (event) => {
+    console.log(event.target.value);
     setPassword(event.target.value);
   }
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     try{
       event.preventDefault();
       console.log(email, password);
-      login(email, password);
+
+      await login (email, password);
+
+      const authToken = localStorage.getItem('authToken');
+      
+      if (authToken != null) {
+        navigate('/home');
+      }
+      
     }catch(error){
       console.log(error);
     }
@@ -40,13 +52,6 @@ const LoginForm = () => {
         onChange={handlePasswordEdit}
         required 
       />
-
-      <div className="divCheck">
-        <input type="checkbox" />
-        <span className="smalldesc ">Lembrar de mim</span>
-
-        <span className="smalldesc">Esqueceu a senha?</span>
-      </div>
 
       <button className="actionBtn" type="submit">Entrar</button>
     </form>

@@ -6,6 +6,7 @@ import profile from "../../../assets/images/profile.png";
 import bell from "../../../assets/images/bell.png";
 import gear from "../../../assets/images/gear.png";
 import "./asideNavigationMenu.css"
+import LogoutButton from "./logoutBtn";
 
 
 const AsideNavigationMenu =() => {
@@ -29,6 +30,8 @@ const AsideNavigationMenu =() => {
                         <li>
                             <Link to="/home"><img src={gear} alt="gear" /><span>Configurações</span></Link>
                         </li>
+                        
+                        <LogoutButton/>
                     </ul>
                 </nav>
                 <div className="anm-btn-report">

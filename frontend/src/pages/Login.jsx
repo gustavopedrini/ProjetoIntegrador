@@ -5,32 +5,22 @@ import LoginForm from "../features/login/LoginForm.jsx";
 import resolvilleLogo from "../assets/images/resolvilleLogo.png";
 import googleLogo from "../assets/images/googleLogo.png";
 import appleLogo from "../assets/images/appleLogo.png";
+import RegistrationForm from "../features/login/RegistrationForm.jsx";
 
 const Login = () => {
   return (
     <div className="screen">
-      <LoginRegisterBtns/>
+      
       <div className="container decorativeImg"></div>
       <div className="container">
         <img className="logo" alt="Logo" src={resolvilleLogo} />
 
-        <div className="btnsForm">
-          <div className="btnColor"></div>
-          <button id="btnLogin"><a>Login</a></button>
-          <button id="btnCadastro"><a>Cadastro</a></button>
-        </div>
+        <LoginRegisterBtns/>
         
         <a className="desc">Faça seu login preenchendo os campos abaixo:</a>
         
         <LoginForm/>
-
-        <form className="deactivated" id="cadastro">
-          <input type="text" placeholder="Nome de Usuário" required />
-          <input type="text" placeholder="Email ou CPF" required />
-          <input type="password" placeholder="Senha" required />
-
-          <button className="actionBtn" type="submit">Cadastrar</button>
-        </form>
+        <RegistrationForm/>
 
         <div className="orLine">
           <a>ou</a>
@@ -38,12 +28,12 @@ const Login = () => {
 
         <button className="continueWithBtn" type="submit">
           <img className="icon" alt="Logo" src={googleLogo} />
-          Continuar com o Google
+          <a>Continuar com o Google</a>
         </button>
 
         <button className="continueWithBtn" type="submit">
           <img className="icon" alt="Logo" src={appleLogo} />
-          Continuar com a Apple
+          <a>Continuar com a Apple</a>
         </button>
       </div>
     </div>

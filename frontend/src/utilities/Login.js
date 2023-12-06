@@ -1,7 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-
 import Requester from "../data/Requester";
-
 
 const login = async (email, password) => {
     try {
@@ -16,10 +14,10 @@ const login = async (email, password) => {
         })
         const decodedToken = jwtDecode(authToken);
         
-        console.log("authToken:", authToken);
-        console.log("User CPF:", decodedToken.cpf);
-        console.log("User Email:", decodedToken.email);
-        console.log("User Role:", decodedToken.role);
+        // console.log("authToken:", authToken);
+        // console.log("User CPF:", decodedToken.cpf);
+        // console.log("User Email:", decodedToken.email);
+        // console.log("User Role:", decodedToken.role);
 
         localStorage.setItem("authToken", `${authToken}`);
         localStorage.setItem("userCPF", `${decodedToken.cpf}`);
@@ -30,6 +28,5 @@ const login = async (email, password) => {
         throw new Error(error);
     }
 };
-
 
 export default login;
