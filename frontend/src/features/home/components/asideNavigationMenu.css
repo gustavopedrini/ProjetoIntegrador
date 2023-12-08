@@ -97,3 +97,22 @@
 .anm-navigation-links ul li a:hover {
     scale: 1.1;
 }
+
+.menuBtns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 36px;
+    transition: all 0.3s ease-in-out;
+
+    background: transparent;
+}
+
+.menuBtns:hover{
+    scale: 1.1;
+}
+
+.anm-btn-report button:hover {
+    background-color: var(--anm-background-color);
+    color: white;
+}

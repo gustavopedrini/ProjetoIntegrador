@@ -13,7 +13,7 @@ const LogoutButton = () => {
 
   return (
     <li>
-      <button onClick={handleLogout}>
+      <button className='menuBtns' onClick={handleLogout}>
         <img src={logoutIcon} alt="logoutIcon" />
         <span>Logout</span>
       </button>
