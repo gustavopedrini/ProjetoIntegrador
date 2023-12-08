@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen{
+  display: inline-grid;
+  grid-template-columns: 500px 500px;
+  grid-template-rows: 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 0px;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  justify-content: space-evenly;
+}
+
+.container {
+  background-color: white;
+  padding: 35px;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+
+  transition: all 0.3s ease-out;
+}
+
+form {
+  transition: all 0.3s ease-out;
+  width: 100%;
+
+  opacity: 1;
+  height: auto;
+}
+
+.btnsForm {
+  margin-top: 20px;
+  position: relative;
+
+  width: 100%;
+  background-color: #779ccc;
+  border-radius: 100px;
+}
+
+.btnsForm button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative;
+  padding: 13px 25px;
+}
+
+.btnColor {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  transition: all 0.2s ease-out;
+  left: 0px; /* Because the first time you don't have any right value defined (a default one) in order to have the transition working but after the first click you set a value thus it will always work. In other words, you cannot have a transition from auto value to px value (this is what is done by the first click). */
+  background-color: #43507e;
+  border-radius: 100px;
+}
+
+#btnLogin, #btnCadastro{
+  color: #ffffff;
+  font-family: "Inter-Bold", Helvetica;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 50%;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+input[type="text"], input[type="password"] {
+  margin-top: 5px;
+  border-radius: 60px;
+  padding: 14px;
+  width: 100%;
+
+  background-color: #fbfcff;
+  border: 1px solid;
+  border-color: #c8d6e5;
+  border-radius: 5px;
+
+  color: #a5a5a5;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.desc{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000;
+  text-align: center;
+  font-size: 0.88rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.smalldesc{
+  color: #000;
+  text-align: center;
+  font-size: 0.825rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.actionBtn {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  
+  background-color: #5d89c4;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 11px 0 11px 0;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.divCheck {
+  display: flex;
+  margin: 10px 0 0 5px;
+  width: 100%;
+  font-size: 13px;
+  justify-content: space-between;
+}
+
+.orLine{
+  margin: 15px 0 15px 0;
+
+  background-color: #c5c3c3; 
+  font-size: 16px; 
+  font-weight: 800; 
+  word-wrap: break-word;
+  position: relative;
+  width: 100%;
+  height: 0.145rem;
+}
+
+.orLine a{
+  color: #c5c3c3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+
+  background-color: #ffffff;
+  padding: 0 10px 0 10px;
+}
+
+.logo{
+  width: 100%;
+}
+
+.icon{
+  width: 22px;
+  margin-right: 8px;
+}
+
+.continueWithBtn{
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: rgb(0, 0, 0);
+  
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 14px 0 14px 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deactivated{
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.decorativeImg{
+  transition: all 0.2s ease-out;
+
+  background-image: url("../../assets/images/joinvilleFlag.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  height: 100%;
+  width: 600px;
+}
